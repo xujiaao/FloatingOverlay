@@ -5,7 +5,7 @@
 
 ## 用途
 
-替换 WebView 视频播放器, 并实现小窗播放. [下载示例](https://github.com/xujiaao/FloatingOverlay/releases/latest)
+替换 WebView 视频播放器, 并实现小窗播放 (仿腾讯新闻). [下载示例](https://github.com/xujiaao/FloatingOverlay/releases/latest)
 
 ![](doc/sample.gif)
 
