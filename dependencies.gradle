@@ -1,0 +1,40 @@
+def kotlin_version = '1.2.41'
+def support_libraries_version = '27.1.1'
+
+ext {
+    androidCompileSdkVersion = 27
+    androidBuildToolsVersion = '27.0.3'
+
+    androidMinSdkVersion = 14
+    androidTargetSdkVersion = 22
+
+    androidSourceCompatibilityVersion = JavaVersion.VERSION_1_7
+    androidTargetCompatibilityVersion = JavaVersion.VERSION_1_7
+
+    dep = [
+            /**
+             * Plugins.
+             */
+            pluginAndroid       : 'com.android.tools.build:gradle:3.2.0-alpha14',
+            pluginKotlin        : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version",
+
+            /**
+             * Libraries (Android Support).
+             */
+            libAppcompatV7      : "com.android.support:appcompat-v7:$support_libraries_version",
+            libRecyclerView     : "com.android.support:recyclerview-v7:$support_libraries_version",
+            libSupportAnnotation: "com.android.support:support-annotations:$support_libraries_version",
+            libSupportV4        : "com.android.support:support-v4:$support_libraries_version",
+
+            /**
+             * Libraries (Kotlin).
+             */
+            libAnko             : "org.jetbrains.anko:anko:0.10.5",
+            libKotlinStdlib     : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+
+            /**
+             * Libraries (3rd Party).
+             */
+            libJsBridge         : 'com.github.lzyzsd:jsbridge:1.0.4'
+    ]
+}

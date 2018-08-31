@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>Sample</title>
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-md-9">
+            <h3 id="title">Title Title Title Title Title Title Title Title</h3>
+            <h6 id="state"></h6>
+            <p>
+                <button id="update" class="btn btn-primary btn-sm">Update</button>
+                <button id="close" class="btn btn-danger btn-sm">Close</button>
+            </p>
+            <div id="block" style="display: none; height: 80px;">&nbsp;</div>
+            <div id="video"
+                 style="width:100%; padding-top: 30%; padding-bottom: 30%; background: gold; text-align: center;">
+                CLICK HERE TO OPEN VIDEO !!!
+            </div>
+            <br/>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <p>Content Content Content Content Content Content Content Content Content Content</p>
+            <br/>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<script>
+    $("#state").html("Loading...");
+
+    function onWebViewJavascriptBridgeReady(bridge) {
+        $("#state").html("Javascript Bridge Ready...");
+
+        var video = $("#video");
+        video.click(function () {
+            var position = video.offset();
+            var data = {
+                title: $("#title").text(),
+                uri: "https://www.sample-videos.com/video/mp4/240/big_buck_bunny_240p_30mb.mp4",
+                left: position.left,
+                top: position.top,
+                width: video.outerWidth(),
+                height: video.outerHeight()
+            };
+
+            bridge.callHandler("show", data, function (responseData) {
+                $("#state").html("send get responseData from java, data = " + responseData);
+            });
+        });
+
+        $("#update").click(function () {
+            $("#block").toggle()
+
+            var position = video.offset();
+            bridge.callHandler("update", {
+                left: position.left,
+                top: position.top,
+                width: video.outerWidth(),
+                height: video.outerHeight()
+            });
+        });
+
+        $("#close").click(function () {
+            bridge.callHandler("close");
+        });
+    }
+
+    if (window["WebViewJavascriptBridge"]) {
+        onWebViewJavascriptBridgeReady(window["WebViewJavascriptBridge"]);
+    } else {
+        document.addEventListener("WebViewJavascriptBridgeReady", function () {
+            onWebViewJavascriptBridgeReady(window["WebViewJavascriptBridge"]);
+        }, false);
+    }
+</script>
+</body>
+</html>

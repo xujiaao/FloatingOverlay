@@ -1,0 +1,70 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId 'com.xujiaao.android.overlay.sample'
+        versionCode 1
+        versionName "1.0.${new SimpleDateFormat('YYYYMMddHHmm').format(new Date())}"
+
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+    }
+
+    signingConfigs {
+        sample configureKeystore('sample')
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.sample
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.sample
+        }
+    }
+}
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation dep.libAppcompatV7
+    implementation dep.libRecyclerView
+
+    implementation dep.libAnko
+    implementation dep.libKotlinStdlib
+
+    implementation dep.libJsBridge
+
+    implementation project(':floating-overlay')
+}
+
+def configureKeystore(name) {
+    def dir = rootProject.file('keystore')
+
+    def properties = new Properties()
+    properties.load(new FileInputStream(new File(dir, "${name}.properties")))
+
+    return {
+        storeFile = new File(dir, "${name}.keystore")
+        storePassword = properties['KEYSTORE_PASSWORD']
+        keyAlias = properties['KEY_ALIAS']
+        keyPassword = properties['KEY_PASSWORD']
+    }
+}

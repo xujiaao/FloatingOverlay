@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FloatingOverlay</string>
+
+    <string name="start">Start</string>
+    <string name="pause">Pause</string>
+    <string name="close">Close</string>
+
+    <string name="sample_web_overlay">WebView Player Overlay</string>
+    <string name="sample_collapsible_web_overlay">WebView Player Overlay (Collapsible)</string>
+</resources>
