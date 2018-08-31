@@ -11,9 +11,12 @@
 
 替换 WebView 视频播放器, 并实现小窗播放.
 
+[下载示例](https://github.com/xujiaao/FloatingOverlay/releases/latest)
+
+
 ## 用法
 
-复制 FloatingOverlay.java
+复制 [FloatingOverlay.java](floating-overlay/src/main/java/com/xujiaao/android/overlay/FloatingOverlay.java)
 
 ````java
 final FloatingOverlay floatingOverlay = FloatingOverlay.create(webView);
@@ -27,5 +30,3 @@ layoutParams.height = 100;
 
 floatingOverlay.show();
 ````
-
-
