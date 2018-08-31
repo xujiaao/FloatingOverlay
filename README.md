@@ -1,6 +1,6 @@
 # FloatingOverlay
 
-山寨版 ViewOverlay :bowtie:. 支持浮层滑动/点击 (Android 4.0 及以上可用).
+山寨版 ViewOverlay :bowtie: 支持浮层滑动/点击 (Android 4.0 及以上可用).
 
 
 ## 用途
