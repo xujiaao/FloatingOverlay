@@ -4,7 +4,7 @@
 
 - 支持 4.0 及以上设备
 
-- 支持滑动/点击
+- 支持浮层滑动/点击
 
 
 ## 用途
@@ -15,7 +15,7 @@
 
 复制 FloatingOverlay.java
 
-````
+````java
 final FloatingOverlay floatingOverlay = FloatingOverlay.create(webView);
 
 final View view = floatingOverlay.inflate(R.layout.video, true);
