@@ -7,6 +7,8 @@
 
 替换 WebView 视频播放器, 并实现小窗播放.
 
+![](doc/sample.gif)
+
 [下载示例](https://github.com/xujiaao/FloatingOverlay/releases/latest)
 
 
