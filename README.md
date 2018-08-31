@@ -15,14 +15,16 @@
 复制 [FloatingOverlay.java](floating-overlay/src/main/java/com/xujiaao/android/overlay/FloatingOverlay.java)
 
 ````java
-final FloatingOverlay floatingOverlay = FloatingOverlay.create(webView);
-
-final View view = floatingOverlay.inflate(R.layout.video, true);
-final FloatingOverlay.LayoutParams layoutParams = (FloatingOverlay.LayoutParams) view.getLayoutParams();
+final FloatingOverlay.LayoutParams layoutParams = new FloatingOverlay.LayoutParams();
 layoutParams.x = 100;
 layoutParams.y = 100;
 layoutParams.width = 100;
 layoutParams.height = 100;
 
+final VideoView videoView = new VideoView(this);
+videoView.setLayoutParams(layoutParams);
+
+final FloatingOverlay floatingOverlay = FloatingOverlay.create(webView);
+floatingOverlay.add(videoView);
 floatingOverlay.show();
 ````
